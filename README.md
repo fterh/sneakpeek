@@ -48,6 +48,10 @@ The comments module (in `comment.py`) exports the Comment class, which all Handl
 A list of valid actions is provided by `DatabaseActionEnum` in the `database` module: `ERROR`, `SKIP`, and `SUCCESS`.
 
 ## Changelog
+#### v0.2.0-beta
+* Add scheduling to run every 2 minutes
+* Update database module to be compatible with new database table structure (3 columns)
+
 #### v0.1.0-beta
 * Minimum viable product
 * Supports channelnewsasia.com, mothership.sg, ricemedia.co, straitstimes.com, todayonline.com, zula.sg
