@@ -1,11 +1,14 @@
+import time
+
 import praw
+import schedule
 
 import config
 from database import DatabaseManager
 from scan import scan
 
 
-if __name__ == "__main__":
+def start():
     print("Starting main")
 
     reddit = praw.Reddit(
@@ -18,3 +21,13 @@ if __name__ == "__main__":
     scan(reddit.subreddit(config.SUBREDDIT))
 
     DatabaseManager.disconnect()
+
+
+schedule.every(config.RUN_EVERY).minutes.do(start)
+
+
+if __name__ == "__main__":
+    while True:
+        schedule.run_pending()
+        print("Sleeping")
+        time.sleep(1)
