@@ -7,8 +7,11 @@ load_dotenv()
 # Set to "prod" in production, but default to "dev"
 ENV = os.getenv("ENV", "dev")
 
+# In minutes
+RUN_EVERY = 2
+
 BOT = {
-    "VERSION": "0.1.0-beta",
+    "VERSION": "0.2.0-beta",
     "REPO_LINK": "https://github.com/fterh/sneakpeek",
     "CONTRIBUTE_LINK": "https://github.com/fterh/sneakpeek"
 }

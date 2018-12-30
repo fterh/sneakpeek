@@ -77,8 +77,9 @@ class DatabaseManager:
 
         c = cls.cursor
         c.execute(
-            "INSERT INTO {} VALUES (?, ?)".format(DB_SUBMISSIONS_TABLE),
+            "INSERT INTO {} VALUES (?, ?, ?)".format(DB_SUBMISSIONS_TABLE),
             (
                 id,
-                action
+                action,
+                ""
             ))

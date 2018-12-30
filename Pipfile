@@ -11,6 +11,7 @@ python-dotenv = "*"
 tldextract = "*"
 invoke = "*"
 newspaper3k = "*"
+schedule = "*"
 
 [requires]
 python_version = "3.7"
