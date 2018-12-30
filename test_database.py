@@ -24,7 +24,7 @@ class TestDatabaseManager(unittest.TestCase):
         # DatabaseManager.bootstrapped = True
 
         c.execute("DELETE FROM {}".format(DB_SUBMISSIONS_TABLE))
-        c.execute("INSERT INTO {} VALUES ('id1', 'action1')".format(
+        c.execute("INSERT INTO {} VALUES ('id1', 'action1', '')".format(
             DB_SUBMISSIONS_TABLE
         ))
 
