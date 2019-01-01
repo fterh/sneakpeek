@@ -59,6 +59,9 @@ A list of valid actions is provided by `DatabaseActionEnum` in the
 `database` module: `ERROR`, `SKIP`, and `SUCCESS`.
 
 ## Changelog
+### v0.2.2-beta
+* Fix scheduling bug
+
 ### v0.2.1-beta
 * Remove ricemedia.co from list of supported sites (incompatibility)
 * Fix start script to run immediately
