@@ -10,7 +10,6 @@ class HandlerManager:
     handlers = {
         "channelnewsasia.com": ArticleHandler,
         "mothership.sg": ArticleHandler,
-        "ricemedia.co": ArticleHandler,
         "straitstimes.com": ArticleHandler,
         "todayonline.com": ArticleHandler,
         "zula.sg": ArticleHandler
