@@ -28,6 +28,7 @@ schedule.every(config.RUN_EVERY).minutes.do(start)
 
 if __name__ == "__main__":
     while True:
+        start()
         schedule.run_pending()
         print("Sleeping")
         time.sleep(1)
