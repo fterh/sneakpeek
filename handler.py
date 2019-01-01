@@ -1,6 +1,7 @@
 import tldextract
 
 from handlers.ArticleHandler import ArticleHandler
+from handlers.RicemediaHandler import RicemediaHandler
 
 
 class HandlerManager:
@@ -10,6 +11,7 @@ class HandlerManager:
     handlers = {
         "channelnewsasia.com": ArticleHandler,
         "mothership.sg": ArticleHandler,
+        "ricemedia.co": RicemediaHandler,
         "straitstimes.com": ArticleHandler,
         "todayonline.com": ArticleHandler,
         "zula.sg": ArticleHandler
