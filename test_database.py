@@ -20,9 +20,6 @@ class TestDatabaseManager(unittest.TestCase):
         conn = sqlite3.connect(DB_NAME)
         c = conn.cursor()
 
-        # bootstrap(c)
-        # DatabaseManager.bootstrapped = True
-
         c.execute("DELETE FROM {}".format(DB_SUBMISSIONS_TABLE))
         c.execute("INSERT INTO {} VALUES ('id1', 'action1', '')".format(
             DB_SUBMISSIONS_TABLE
