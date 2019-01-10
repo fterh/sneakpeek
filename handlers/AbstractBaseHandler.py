@@ -6,7 +6,7 @@ class AbstractBaseHandler(ABC):
 
     @classmethod
     @abstractmethod
-    def handle(cls):
+    def handle(cls, url):
         """
         All Handlers must override the `handle` method,
         which must return a Comment object.
