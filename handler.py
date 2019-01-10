@@ -1,6 +1,7 @@
 import tldextract
 
 from handlers.ArticleHandler import ArticleHandler
+from handlers.TodayonlineHandler import TodayonlineHandler
 
 
 class HandlerManager:
@@ -11,7 +12,7 @@ class HandlerManager:
         "channelnewsasia.com": ArticleHandler,
         "mothership.sg": ArticleHandler,
         "straitstimes.com": ArticleHandler,
-        "todayonline.com": ArticleHandler,
+        "todayonline.com": TodayonlineHandler,
         "zula.sg": ArticleHandler
     }
 
