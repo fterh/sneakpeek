@@ -32,9 +32,6 @@ def scan(subreddit):
                 except Exception as e:
                     print("An error occurred:")
                     print(e)
-                    print("Attempting to write error to database")
-                    DatabaseManager.write_id(submission.id, DatabaseActionEnum.ERROR)
-                    print("Database write succeeded")
             else:
                 print("Submission is too long to be posted.")
                 print("Attempting to write skip to database")

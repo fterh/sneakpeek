@@ -11,7 +11,7 @@ ENV = os.getenv("ENV", "dev")
 RUN_EVERY = 2
 
 BOT = {
-    "VERSION": "0.2.1-beta",
+    "VERSION": "0.3.0-beta",
     "REPO_LINK": "https://github.com/fterh/sneakpeek",
     "CONTRIBUTE_LINK": "https://github.com/fterh/sneakpeek"
 }
