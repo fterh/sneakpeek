@@ -6,9 +6,9 @@ too long.
 ## Site support
 * channelnewsasia.com
 * mothership.sg  
-* ricemedia.co
-* straitstimes.com
-* todayonline.com
+* ricemedia.co (thanks yleong)
+* ~~straitstimes.com~~ (temporarily removed)
+* todayonline.com (thanks yleong)
 * zula.sg
 
 ## Contributing
