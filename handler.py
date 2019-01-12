@@ -13,7 +13,7 @@ class HandlerManager:
         "channelnewsasia.com": ArticleHandler,
         "mothership.sg": ArticleHandler,
         "ricemedia.co": RicemediaHandler,
-        "straitstimes.com": ArticleHandler,
+        # "straitstimes.com": ArticleHandler,  # Temporarily remove support until premium article detection
         "todayonline.com": TodayonlineHandler,
         "zula.sg": ArticleHandler
     }
