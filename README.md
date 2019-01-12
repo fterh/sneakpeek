@@ -1,6 +1,7 @@
 # sneakpeek
 A Reddit bot that previews hyperlinks and posts their contents as a comment.
-It should **never spam or double-post**, and will skip a comment if it is too long.
+It should **never spam or double-post**, and will skip a comment if it is
+too long.
 
 ## Site support
 * channelnewsasia.com
@@ -15,6 +16,12 @@ It should **never spam or double-post**, and will skip a comment if it is too lo
 2. Write documentation
 3. Write Handlers to support more websites
 4. Write tests
+
+### New version release checklist
+1. Create a release branch (e.g. `release-v1.2.3`) from the `develop` branch
+2. Bump version numbers in `config.py` to the release branch
+3. Possibly commit minor bug fixes to the release branch
+4. Merge the release branch into `master` and `develop` 
 
 ## How it works
 ### General
@@ -33,7 +40,8 @@ If a submission qualifies, `scan` calls the `handle` method of the Handler
 to generate the raw comment, then `format_comment(comment)` in the 
 comments module to generate the final comment in Markdown.
 
-If the final comment in Markdown does not exceed a pre-configured comment length (`config.COMMENT_LENGTH_LIMIT`), the comment is posted, and the action written 
+If the final comment in Markdown does not exceed a pre-configured comment length
+(`config.COMMENT_LENGTH_LIMIT`), the comment is posted, and the action written 
 to the database (through `DatabaseManager`) to prevent double-posting.
 
 ### Handlers
@@ -58,7 +66,29 @@ and accepts a `byline` and `attribution` (which are optional).
 A list of valid actions is provided by `DatabaseActionEnum` in the 
 `database` module: `ERROR`, `SKIP`, and `SUCCESS`.
 
+## Running and deploying
+All the commands below assume you have already activated the
+virtual environment (`pipenv shell`). Alternatively, prepend `pipenv run` to
+the commands.
+
+### Development
+`invoke run`
+
+### Testing
+`invoke test`
+
+### Production
+`invoke start` (possibly with `nohup`)
+
 ## Changelog
+### v0.3.0-beta
+* Temporarily remove Straits Times support
+(until premium article detection feature)
+* Fix Todayonline article handling
+* Fix Ricemedia article handling
+* Update AbstractBaseHandler `handle` method definition
+* Add tests
+
 ### v0.2.2-beta
 * Fix scheduling bug
 
