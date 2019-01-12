@@ -17,4 +17,5 @@ class TodayonlineHandler(AbstractBaseHandler):
         article = json.loads(requests.get(TODAY_API_URL).content)["node"]
         title = article["title"]
         body = BeautifulSoup(article["body"], "html.parser").get_text()
+        body = body.replace("\n", "\n\n")  # Markdown requires 2 \n to create a new paragraph
         return Comment(title, body)
