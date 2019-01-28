@@ -7,21 +7,25 @@ too long.
 * channelnewsasia.com
 * mothership.sg  
 * ricemedia.co (thanks yleong)
-* ~~straitstimes.com~~ (temporarily removed)
+* straitstimes.com (as of v0.4.0-beta)
 * todayonline.com (thanks yleong)
 * zula.sg
 
 ## Contributing
-1. Improve this README
-2. Write documentation
-3. Write Handlers to support more websites
-4. Write tests
+1. Write documentation
+2. Write Handlers to support more websites
+3. Write tests
 
 ### New version release checklist
 1. Create a release branch (e.g. `release-v1.2.3`) from the `develop` branch
 2. Bump version numbers in `config.py` to the release branch
-3. Possibly commit minor bug fixes to the release branch
-4. Merge the release branch into `master` and `develop` 
+3. Update README
+4. Possibly commit minor bug fixes to the release branch
+5. Merge the release branch into `master` and `develop` 
+
+This project follows this [Git branching workflow]
+(https://nvie.com/posts/a-successful-git-branching-model/):
+
 
 ## How it works
 ### General
@@ -81,6 +85,8 @@ the commands.
 `invoke start` (possibly with `nohup`)
 
 ## Changelog
+### v0.4.0-beta
+* Add Straits Times support
 ### v0.3.0-beta
 * Temporarily remove Straits Times support
 (until premium article detection feature)

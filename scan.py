@@ -19,6 +19,9 @@ def scan(subreddit):
 
             handler = HandlerManager.get_handler(submission.url)
             comment_raw = handler.handle(submission.url)
+            if comment_raw is None:
+                skip(submission)
+                return
             comment_markdown = format_comment(comment_raw)
 
             if len(comment_markdown) < config.COMMENT_LENGTH_LIMIT:
@@ -38,12 +41,15 @@ def scan(subreddit):
                 DatabaseManager.write_id(submission.id, DatabaseActionEnum.SKIP)
                 print("Database write succeeded")
         else:
-            # If submission does not qualify, write SKIP to database only if it is new.
-            print("Submission does not qualify")
-            print("Checking if submission is new")
-            if DatabaseManager.check_id(submission.id):
-                print("Submission already exists in database. Skipping.")
-            else:
-                print("Attempting to write skip to database")
-                DatabaseManager.write_id(submission.id, DatabaseActionEnum.SKIP)
-                print("Database write succeeded")
+            skip(submission)
+
+def skip(submission):
+    # If submission does not qualify, write SKIP to database only if it is new.
+    print("Submission does not qualify")
+    print("Checking if submission is new")
+    if DatabaseManager.check_id(submission.id):
+        print("Submission already exists in database. Skipping.")
+    else:
+        print("Attempting to write skip to database")
+        DatabaseManager.write_id(submission.id, DatabaseActionEnum.SKIP)
+        print("Database write succeeded")
