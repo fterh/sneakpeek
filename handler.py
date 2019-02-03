@@ -16,7 +16,9 @@ class HandlerManager:
         "ricemedia.co": RicemediaHandler,
         "straitstimes.com": STHandler,
         "todayonline.com": TodayonlineHandler,
-        "zula.sg": ArticleHandler
+        "zula.sg": ArticleHandler,
+        "theonlinecitizen.com": ArticleHandler,
+        "cnb.gov.sg": ArticleHandler
     }
 
     @classmethod
