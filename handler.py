@@ -3,6 +3,7 @@ import tldextract
 from collections import defaultdict
 
 from handlers.ArticleHandler import ArticleHandler
+from handlers.BusinesstimesHandler import BusinesstimesHandler
 from handlers.CNAlifestyleHandler import CNAlifestyleHandler
 from handlers.RicemediaHandler import RicemediaHandler
 from handlers.STHandler import STHandler
@@ -14,6 +15,9 @@ class HandlerManager:
     Manage Handlers and map subdomains and domain names to Handlers.
     """
     handlers = {
+        "businesstimes.com.sg": defaultdict(
+            lambda: BusinesstimesHandler
+        ),
         "channelnewsasia.com": defaultdict(
             lambda: ArticleHandler, # Default Handler for all subdomains (unless specify) for channelnewsasia.com
             cnalifestyle = CNAlifestyleHandler
