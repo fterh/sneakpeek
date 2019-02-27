@@ -3,10 +3,13 @@ import tldextract
 from collections import defaultdict
 
 from handlers.ArticleHandler import ArticleHandler
+from handlers.BusinesstimesHandler import BusinesstimesHandler
 from handlers.CNAlifestyleHandler import CNAlifestyleHandler
 from handlers.RicemediaHandler import RicemediaHandler
 from handlers.STHandler import STHandler
+from handlers.TNPHandler import TNPHandler
 from handlers.TodayonlineHandler import TodayonlineHandler
+from handlers.YahooHandler import YahooHandler
 
 
 class HandlerManager:
@@ -14,6 +17,9 @@ class HandlerManager:
     Manage Handlers and map subdomains and domain names to Handlers.
     """
     handlers = {
+        "businesstimes.com.sg": defaultdict(
+            lambda: BusinesstimesHandler
+        ),
         "channelnewsasia.com": defaultdict(
             lambda: ArticleHandler, # Default Handler for all subdomains (unless specify) for channelnewsasia.com
             cnalifestyle = CNAlifestyleHandler
@@ -27,8 +33,14 @@ class HandlerManager:
         "straitstimes.com": defaultdict(
             lambda: STHandler
         ),
+        "tnp.sg": defaultdict(
+            lambda: TNPHandler
+        ),
         "todayonline.com": defaultdict(
             lambda: TodayonlineHandler
+        ),
+        "yahoo.com": defaultdict(
+            lambda: YahooHandler
         ),
         "zula.sg": defaultdict(
             lambda: ArticleHandler
