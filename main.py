@@ -1,4 +1,5 @@
 import time
+import traceback
 
 import praw
 import schedule
@@ -18,7 +19,12 @@ def start():
         username=config.USERNAME,
         password=config.PASSWORD)
 
-    scan(reddit.subreddit(config.SUBREDDIT))
+    try:
+        scan(reddit.subreddit(config.SUBREDDIT))
+    except Exception as e:
+        print("Exception occurred while scanning")
+        traceback.print_exc()
+
 
     DatabaseManager.disconnect()
 
