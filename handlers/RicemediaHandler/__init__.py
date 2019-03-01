@@ -1,4 +1,3 @@
-import re
 import requests
 import textwrap
 
@@ -25,7 +24,10 @@ class RicemediaHandler(AbstractBaseHandler):
         soup.find(name="div", class_="post-date").insert(0, start_marker)
         soup.find(name="span", class_="author-name").append(end_marker)
 
-        unwrapped_body = re.search(f"{start_marker}(.+?){end_marker}", soup.text).group(1)
+        article_start = soup.text.index(start_marker) + len(start_marker)
+        article_end = soup.text.index(end_marker)
+
+        unwrapped_body = soup.text[article_start:article_end]
         article_body = "\n".join(textwrap.wrap(unwrapped_body, 80))
         article_body = article_body.replace("\n", "\n\n")  # Markdown requires 2 \n to create a new paragraph
         article_title = soup.find(name="h2", class_="post-title").text
