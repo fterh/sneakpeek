@@ -90,7 +90,7 @@ the commands.
 
 ## Changelog
 ### v0.5.0-beta
-* Fix program crash when exception occurs (@yleong #22)
+* Fix program crash when exception occurs (@yleong PR #22)
 * Fix exception in handling Ricemedia links (@yleong PR #20)
 * Add support for businesstimes.com.sg, tnp.sg, yahoo.com (@changhuapeng PR #18)
 * Add support for CNAlifestyle (@changhuapeng PR #17)
