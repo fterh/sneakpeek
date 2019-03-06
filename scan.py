@@ -1,3 +1,5 @@
+import traceback
+
 import config
 from database import DatabaseManager, DatabaseActionEnum
 from handler import HandlerManager
@@ -18,7 +20,14 @@ def scan(subreddit):
             print("Submission qualifies")
 
             handler = HandlerManager.get_handler(submission.url)
-            comment_raw = handler.handle(submission.url)
+
+            comment_raw = None
+            try:
+                comment_raw = handler.handle(submission.url)
+            except Exception as e:
+                print(f"Exception occurred while handling {submission.url}")
+                traceback.print_exc()
+
             if comment_raw is None:
                 skip(submission)
                 return
