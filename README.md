@@ -4,11 +4,15 @@ It should **never spam or double-post**, and will skip a comment if it is
 too long.
 
 ## Site support
+* businesstimes.com.sg
 * channelnewsasia.com
+* channelnewsasia.com (CNAlifestyle)
 * mothership.sg  
-* ricemedia.co (thanks yleong)
-* straitstimes.com (as of v0.4.0-beta)
-* todayonline.com (thanks yleong)
+* ricemedia.co
+* straitstimes.com
+* tnp.sg
+* todayonline.com
+* yahoo.com
 * zula.sg
 
 ## Contributing
@@ -85,6 +89,11 @@ the commands.
 `invoke start` (possibly with `nohup`)
 
 ## Changelog
+### v0.5.0-beta
+* Fix program crash when exception occurs (@yleong #22)
+* Fix exception in handling Ricemedia links (@yleong PR #20)
+* Add support for businesstimes.com.sg, tnp.sg, yahoo.com (@changhuapeng PR #18)
+* Add support for CNAlifestyle (@changhuapeng PR #17)
 ### v0.4.0-beta
 * Add Straits Times support
 ### v0.3.0-beta
