@@ -11,7 +11,7 @@ def scan(subreddit):
     """Scan a Subreddit for new submissions."""
     print("Starting scan")
 
-    for submission in subreddit.new(limit=config.LIMIT):
+    for submission in subreddit.stream.submissions():
         print("Operating on submission ID: " + submission.id)
 
         does_qualify = qualify(submission)

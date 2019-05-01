@@ -22,19 +22,15 @@ def start():
     try:
         scan(reddit.subreddit(config.SUBREDDIT))
     except Exception as e:
-        print("Exception occurred while scanning")
+        # This should never happen,
+        # because it breaks the infinite subreddit monitoring
+        # provided by subreddit.stream.submissions()
+        print("Exception occurred while scanning. This should never happen!")
         traceback.print_exc()
 
 
     DatabaseManager.disconnect()
 
 
-schedule.every(config.RUN_EVERY).minutes.do(start)
-
-
 if __name__ == "__main__":
     start()
-    while True:
-        schedule.run_pending()
-        print("Sleeping")
-        time.sleep(1)
