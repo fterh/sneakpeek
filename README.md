@@ -89,6 +89,8 @@ the commands.
 `invoke start` (possibly with `nohup`)
 
 ## Changelog
+### v0.6.0-beta
+* Update subreddit monitoring implementation (fixes #25)
 ### v0.5.0-beta
 * Fix program crash when exception occurs (@yleong PR #22)
 * Fix exception in handling Ricemedia links (@yleong PR #20)
