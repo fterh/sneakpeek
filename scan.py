@@ -1,7 +1,6 @@
 import traceback
 
 import config
-from database import DatabaseManager, DatabaseActionEnum
 from handler import HandlerManager
 from comment import format_comment
 from qualify import qualify
@@ -38,27 +37,14 @@ def scan(subreddit):
                     print("Attempting to post a comment")
                     submission.reply(comment_markdown)
                     print("Comment posting succeeded")
-                    print("Attempting to write success to database")
-                    DatabaseManager.write_id(submission.id, DatabaseActionEnum.SUCCESS)
-                    print("Database write succeeded")
                 except Exception as e:
                     print("An error occurred:")
                     print(e)
             else:
                 print("Submission is too long to be posted.")
-                print("Attempting to write skip to database")
-                DatabaseManager.write_id(submission.id, DatabaseActionEnum.SKIP)
-                print("Database write succeeded")
         else:
             skip(submission)
 
 def skip(submission):
     # If submission does not qualify, write SKIP to database only if it is new.
     print("Submission does not qualify")
-    print("Checking if submission is new")
-    if DatabaseManager.check_id(submission.id):
-        print("Submission already exists in database. Skipping.")
-    else:
-        print("Attempting to write skip to database")
-        DatabaseManager.write_id(submission.id, DatabaseActionEnum.SKIP)
-        print("Database write succeeded")

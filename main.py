@@ -1,11 +1,6 @@
-import time
 import traceback
-
 import praw
-import schedule
-
 import config
-from database import DatabaseManager
 from scan import scan
 
 
@@ -27,9 +22,6 @@ def start():
         # provided by subreddit.stream.submissions()
         print("Exception occurred while scanning. This should never happen!")
         traceback.print_exc()
-
-
-    DatabaseManager.disconnect()
 
 
 if __name__ == "__main__":
