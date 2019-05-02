@@ -78,13 +78,13 @@ virtual environment (`pipenv shell`). Alternatively, prepend `pipenv run` to
 the commands.
 
 ### Development
-`invoke run`
+`python main.py`
 
 ### Testing
 `invoke test`
 
 ### Production
-`invoke start` (possibly with `nohup`)
+`ENV=prod python main.py` or `ENV=prod nohup python main.py &`
 
 ## Changelog
 ### v0.6.0-beta
