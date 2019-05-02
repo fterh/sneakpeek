@@ -1,6 +1,7 @@
 import traceback
 
 import config
+import sys
 from handler import HandlerManager
 from comment import format_comment
 from qualify import qualify
@@ -44,6 +45,9 @@ def scan(subreddit):
                 print("Submission is too long to be posted.")
         else:
             skip(submission)
+
+        # Flush stdout buffer
+        sys.stdout.flush()
 
 def skip(submission):
     # If submission does not qualify, write SKIP to database only if it is new.
