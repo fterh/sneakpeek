@@ -27,9 +27,7 @@ too long.
 4. Possibly commit minor bug fixes to the release branch
 5. Merge the release branch into `master` and `develop` 
 
-This project follows this [Git branching workflow]
-(https://nvie.com/posts/a-successful-git-branching-model/):
-
+This project follows this [Git branching workflow](https://nvie.com/posts/a-successful-git-branching-model/):
 
 ## How it works
 ### General
@@ -114,12 +112,12 @@ the commands.
 * Fix start script to run immediately
 * Fix long lines in README
 
-#### v0.2.0-beta
+### v0.2.0-beta
 * Add scheduling to run every 2 minutes
 * Update database module to be compatible with new database table structure
 (3 columns)
 
-#### v0.1.0-beta
+### v0.1.0-beta
 * Minimum viable product
 * Supports channelnewsasia.com, mothership.sg, ricemedia.co, straitstimes.com, 
 todayonline.com, zula.sg
