@@ -87,8 +87,13 @@ the commands.
 `ENV=prod python main.py` or `ENV=prod nohup python main.py &`
 
 ## Changelog
+### v0.7.0-beta
+* Fix random crashes (issue #25)
+* Fix README formatting issues
+* Clean up code
+
 ### v0.6.0-beta
-* Update subreddit monitoring implementation (fixes #25)
+* Update subreddit monitoring implementation
 ### v0.5.0-beta
 * Fix program crash when exception occurs (@yleong PR #22)
 * Fix exception in handling Ricemedia links (@yleong PR #20)
