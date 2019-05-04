@@ -27,22 +27,19 @@ too long.
 4. Possibly commit minor bug fixes to the release branch
 5. Merge the release branch into `master` and `develop` 
 
-This project follows this [Git branching workflow]
-(https://nvie.com/posts/a-successful-git-branching-model/):
-
+This project follows this [Git branching workflow](https://nvie.com/posts/a-successful-git-branching-model/):
 
 ## How it works
 ### General
 `main.py` starts the bot and calls `scan(subreddit)` (in `scan.py`), 
-which scans for submissions in the provided subreddit.
+which monitors for new submissions in the provided subreddit.
 
-`scan` gets a pre-configured number (`config.LIMIT`) of the latest submissions 
-and checks if they qualify for preview by calling `qualify` (in `qualify.py`). 
+For each new submission, `scan` checks if they qualify for preview 
+by calling `qualify` (in `qualify.py`). 
 
 A submission qualifies for preview if it:
 1. Is a link
-2. Has not been encountered by the bot previously
-3. Has a Handler for the website
+2. Has a Handler for the website
 
 If a submission qualifies, `scan` calls the `handle` method of the Handler 
 to generate the raw comment, then `format_comment(comment)` in the 
@@ -66,31 +63,29 @@ The comments module (in `comment.py`) exports the Comment class,
 which all Handlers must return. A Comment class requires a `title` and `body`, 
 and accepts a `byline` and `attribution` (which are optional). 
 
-### Database
-|submission_id|action|notes
-|--|--|--
-|text|text|text
-
-A list of valid actions is provided by `DatabaseActionEnum` in the 
-`database` module: `ERROR`, `SKIP`, and `SUCCESS`.
-
 ## Running and deploying
 All the commands below assume you have already activated the
 virtual environment (`pipenv shell`). Alternatively, prepend `pipenv run` to
 the commands.
 
 ### Development
-`invoke run`
+`python main.py`
 
 ### Testing
 `invoke test`
 
 ### Production
-`invoke start` (possibly with `nohup`)
+`ENV=prod python main.py` or `ENV=prod nohup python main.py &`
 
 ## Changelog
+### v0.7.0-beta
+* Fix random crashes (issue #25)
+* Fix README formatting issues
+* Clean up code
+* Update README developer documentation
+
 ### v0.6.0-beta
-* Update subreddit monitoring implementation (fixes #25)
+* Update subreddit monitoring implementation
 ### v0.5.0-beta
 * Fix program crash when exception occurs (@yleong PR #22)
 * Fix exception in handling Ricemedia links (@yleong PR #20)
@@ -114,12 +109,12 @@ the commands.
 * Fix start script to run immediately
 * Fix long lines in README
 
-#### v0.2.0-beta
+### v0.2.0-beta
 * Add scheduling to run every 2 minutes
 * Update database module to be compatible with new database table structure
 (3 columns)
 
-#### v0.1.0-beta
+### v0.1.0-beta
 * Minimum viable product
 * Supports channelnewsasia.com, mothership.sg, ricemedia.co, straitstimes.com, 
 todayonline.com, zula.sg
