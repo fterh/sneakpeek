@@ -1,5 +1,4 @@
 import logging
-import sys
 import praw
 import config
 from scan import scan
@@ -7,9 +6,9 @@ from scan import scan
 
 def setup_logging():
     root = logging.getLogger()
-    root.setLevel(logging.DEBUG)
+    root.setLevel(config.LOGGING["LEVEL"])
 
-    handler = logging.StreamHandler(sys.stdout)  # Log to stdout (see: https://12factor.net/logs)
+    handler = config.LOGGING["HANDLER"]
     handler.setLevel(logging.DEBUG)
 
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')

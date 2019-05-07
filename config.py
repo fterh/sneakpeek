@@ -1,4 +1,6 @@
+import logging
 import os
+import sys
 from dotenv import load_dotenv
 
 
@@ -6,6 +8,12 @@ load_dotenv()
 
 # Set to "prod" in production, but default to "dev"
 ENV = os.getenv("ENV", "dev")
+
+# Logging configuration
+LOGGING = {
+    "LEVEL": logging.DEBUG,
+    "HANDLER": logging.StreamHandler(sys.stdout)  # Log to stdout (see: https://12factor.net/logs)
+}
 
 BOT = {
     "VERSION": "0.7.0-beta",
