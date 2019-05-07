@@ -1,4 +1,7 @@
 # sneakpeek
+
+[![Build Status](https://travis-ci.com/fterh/sneakpeek.svg?branch=master)](https://travis-ci.com/fterh/sneakpeek)
+
 A Reddit bot that previews hyperlinks and posts their contents as a comment.
 It should **never spam or double-post**, and will skip a comment if it is
 too long.
