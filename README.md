@@ -52,6 +52,9 @@ If the final comment in Markdown does not exceed a pre-configured comment length
 (`config.COMMENT_LENGTH_LIMIT`), the comment is posted, and the action written 
 to the database (through `DatabaseManager`) to prevent double-posting.
 
+Logging is written to standard output, and logging level can be configured in
+`config.py`.
+
 ### Handlers
 `handler.py` contains a HandlerManager that checks if a website has a Handler. 
 
@@ -81,6 +84,12 @@ the commands.
 `ENV=prod python main.py` or `ENV=prod nohup python main.py &`
 
 ## Changelog
+### v0.8.0-beta
+* Fix program stops running after a while (issue #30)
+* Implement proper logging
+* Clean up and refactor codebase
+* Travis CI
+
 ### v0.7.0-beta
 * Fix random crashes (issue #25)
 * Fix README formatting issues
