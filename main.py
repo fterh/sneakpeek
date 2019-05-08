@@ -1,12 +1,25 @@
-import traceback
+import logging
 import praw
 import config
 from scan import scan
 
 
-def start():
-    print("Starting main")
+def setup_logging():
+    root = logging.getLogger()
+    root.setLevel(config.LOGGING["LEVEL"])
 
+    handler = config.LOGGING["HANDLER"]
+    handler.setLevel(logging.DEBUG)
+
+    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+
+    handler.setFormatter(formatter)
+    root.addHandler(handler)
+
+
+def start():
+    logging.info("Starting application")
+    logging.info("Instantiating Reddit instance")
     reddit = praw.Reddit(
         client_id=config.CLIENT["ID"],
         client_secret=config.CLIENT["SECRET"],
@@ -20,9 +33,10 @@ def start():
         # This should never happen,
         # because it breaks the infinite subreddit monitoring
         # provided by subreddit.stream.submissions()
-        print("Exception occurred while scanning. This should never happen!")
-        traceback.print_exc()
+        logging.critical("Exception occurred while scanning. This should never happen.")
+        logging.critical(e)
 
 
 if __name__ == "__main__":
+    setup_logging()
     start()
