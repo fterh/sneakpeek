@@ -12,7 +12,7 @@ before_script:
   - pipenv install
 script:
   - pipenv run invoke test
-before_deploy:
+after_success:
   - pipenv run pip freeze > requirements.txt
   - docker build --tag=sneakpeek .
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
