@@ -19,9 +19,11 @@ too long.
 * zula.sg
 
 ## Contributing
-1. Write documentation
-2. Write Handlers to support more websites
-3. Write tests
+PRs are always welcome.
+
+1. Write Handlers to support more websites
+2. Improve test coverage
+3. Improve documentation
 
 ### New version release checklist
 1. Create a release branch (e.g. `release-v1.2.3`) from the `develop` branch
@@ -30,9 +32,9 @@ too long.
 4. Possibly commit minor bug fixes to the release branch
 5. Merge the release branch into `master` and `develop` 
 
-This project follows this [Git branching workflow](https://nvie.com/posts/a-successful-git-branching-model/):
+This project follows this [Git branching workflow](https://nvie.com/posts/a-successful-git-branching-model/).
 
-## How it works
+## Operation
 ### General
 `main.py` starts the bot and calls `scan(subreddit)` (in `scan.py`), 
 which monitors for new submissions in the provided subreddit.
