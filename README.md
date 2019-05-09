@@ -35,6 +35,18 @@ PRs are always welcome.
 This project follows this [Git branching workflow](https://nvie.com/posts/a-successful-git-branching-model/).
 
 ## Operation
+### Before running
+The program requires an environmental variable to be set `SUBREDDIT`.
+This specifies the subreddit that the bot will monitor.
+At the moment, only 1 subreddit may be specified.
+
+### Running/Testing
+All the commands below assume that the virtual environment has been activated
+(`pipenv shell`).
+
+* Running: `SUBREDDIT=name python main.py` (or `SUBREDDIT=name nohup python main.py &`)
+* Testing: `invoke test`
+
 ### General
 `main.py` starts the bot and calls `scan(subreddit)` (in `scan.py`), 
 which monitors for new submissions in the provided subreddit.
@@ -70,17 +82,3 @@ sub-modules or sub-packages as necessary.
 The comments module (in `comment.py`) exports the Comment class, 
 which all Handlers must return. A Comment class requires a `title` and `body`, 
 and accepts a `byline` and `attribution` (which are optional). 
-
-## Running and deploying
-All the commands below assume you have already activated the
-virtual environment (`pipenv shell`). Alternatively, prepend `pipenv run` to
-the commands.
-
-### Development
-`python main.py`
-
-### Testing
-`invoke test`
-
-### Production
-`ENV=prod python main.py` or `ENV=prod nohup python main.py &`
