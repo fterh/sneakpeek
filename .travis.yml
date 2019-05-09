@@ -15,7 +15,6 @@ script:
 before_deploy:
   - pipenv run pip freeze > requirements.txt
   - docker build --tag=sneakpeek .
-deploy:
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
   - docker tag sneakpeek "$DOCKER_USERNAME"/sneakpeek
   - docker push "$DOCKER_USERNAME"/sneakpeek
