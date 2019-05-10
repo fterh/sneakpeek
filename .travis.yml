@@ -1,9 +1,20 @@
 dist: xenial
+services:
+  - docker
 language: python
 python:
   - "3.7"
+before_install:
+  - docker pull python:3
 install:
   - pip install pipenv
-script:
+before_script:
   - pipenv install
+script:
   - pipenv run invoke test
+after_success:
+  - pipenv run pip freeze > requirements.txt
+  - docker build --tag=sneakpeek .
+  - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
+  - docker tag sneakpeek "$DOCKER_USERNAME"/sneakpeek
+  - docker push "$DOCKER_USERNAME"/sneakpeek

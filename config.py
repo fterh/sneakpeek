@@ -6,9 +6,6 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-# Set to "prod" in production, but default to "dev"
-ENV = os.getenv("ENV", "dev")
-
 # Logging configuration
 LOGGING = {
     "LEVEL": logging.DEBUG,
@@ -31,5 +28,5 @@ PASSWORD = os.getenv("PASSWORD")
 
 USER_AGENT = os.getenv("USER_AGENT")
 
-SUBREDDIT = "singapore" if ENV == "prod" else "rsgretrivr"
+SUBREDDIT = os.getenv("SUBREDDIT", "all")  # Set subreddit using environmental variables, default to /r/all
 COMMENT_LENGTH_LIMIT = 9900
