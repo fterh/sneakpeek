@@ -1,4 +1,10 @@
 ## Changelog
+## v1.0.0
+* Add support for Docker
+* Set up continuous deployment (Heroku)
+* Update README
+* Separate changelog into CHANGELOG.md
+
 ### v0.8.0-beta
 * Fix program stops running after a while (issue #30)
 * Implement proper logging

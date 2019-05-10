@@ -13,7 +13,7 @@ LOGGING = {
 }
 
 BOT = {
-    "VERSION": "0.8.0-beta",
+    "VERSION": "1.0.0",
     "REPO_LINK": "https://github.com/fterh/sneakpeek",
     "CONTRIBUTE_LINK": "https://github.com/fterh/sneakpeek"
 }
