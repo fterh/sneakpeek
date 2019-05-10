@@ -19,4 +19,3 @@ deploy:
   app:
     master: fterh-sneakpeek
     develop: fterh-sneakpeek-staging
-    cd: fterh-sneakpeek-staging
