@@ -36,8 +36,9 @@ This project follows this [Git branching workflow](https://nvie.com/posts/a-succ
 
 ## Operation
 ### Before running
-The program requires an environmental variable to be set `SUBREDDIT`.
+The program requires an environmental variable `SUBREDDIT` to be set.
 This specifies the subreddit that the bot will monitor.
+If it's not set, the default subreddit `/r/all` will be monitored.
 At the moment, only 1 subreddit may be specified.
 
 ### Running/Testing
@@ -46,6 +47,9 @@ All the commands below assume that the virtual environment has been activated
 
 * Running: `SUBREDDIT=name python main.py` (or `SUBREDDIT=name nohup python main.py &`)
 * Testing: `invoke test`
+
+#### Docker
+This application can be built and run as a Docker image.
 
 ### General
 `main.py` starts the bot and calls `scan(subreddit)` (in `scan.py`), 
