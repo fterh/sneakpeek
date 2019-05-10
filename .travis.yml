@@ -18,3 +18,10 @@ after_success:
   - docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD"
   - docker tag sneakpeek "$DOCKER_USERNAME"/sneakpeek
   - docker push "$DOCKER_USERNAME"/sneakpeek
+deploy:
+  provider: heroku
+  api_key:
+    secure: "$HEROKU_API_KEY"
+  app:
+    master: fterh-sneakpeek
+    develop: fterh-sneakpeek-staging
