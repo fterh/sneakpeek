@@ -1,9 +1,21 @@
 dist: xenial
+services:
+  - docker
 language: python
 python:
   - "3.7"
+before_install:
+  - docker pull python:3
 install:
   - pip install pipenv
-script:
+before_script:
   - pipenv install
+script:
   - pipenv run invoke test
+deploy:
+  provider: heroku
+  api_key:
+    secure: "$HEROKU_API_KEY"
+  app:
+    master: fterh-sneakpeek
+    develop: fterh-sneakpeek-staging

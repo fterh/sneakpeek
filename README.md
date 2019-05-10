@@ -19,9 +19,11 @@ too long.
 * zula.sg
 
 ## Contributing
-1. Write documentation
-2. Write Handlers to support more websites
-3. Write tests
+PRs are always welcome.
+
+1. Write Handlers to support more websites
+2. Improve test coverage
+3. Improve documentation
 
 ### New version release checklist
 1. Create a release branch (e.g. `release-v1.2.3`) from the `develop` branch
@@ -30,9 +32,25 @@ too long.
 4. Possibly commit minor bug fixes to the release branch
 5. Merge the release branch into `master` and `develop` 
 
-This project follows this [Git branching workflow](https://nvie.com/posts/a-successful-git-branching-model/):
+This project follows this [Git branching workflow](https://nvie.com/posts/a-successful-git-branching-model/).
 
-## How it works
+## Operation
+### Before running
+The program requires an environmental variable `SUBREDDIT` to be set.
+This specifies the subreddit that the bot will monitor.
+If it's not set, the default subreddit `/r/all` will be monitored.
+At the moment, only 1 subreddit may be specified.
+
+### Running/Testing
+All the commands below assume that the virtual environment has been activated
+(`pipenv shell`).
+
+* Running: `SUBREDDIT=name python main.py` (or `SUBREDDIT=name nohup python main.py &`)
+* Testing: `invoke test`
+
+#### Docker
+This application can be built and run as a Docker image.
+
 ### General
 `main.py` starts the bot and calls `scan(subreddit)` (in `scan.py`), 
 which monitors for new submissions in the provided subreddit.
@@ -68,65 +86,3 @@ sub-modules or sub-packages as necessary.
 The comments module (in `comment.py`) exports the Comment class, 
 which all Handlers must return. A Comment class requires a `title` and `body`, 
 and accepts a `byline` and `attribution` (which are optional). 
-
-## Running and deploying
-All the commands below assume you have already activated the
-virtual environment (`pipenv shell`). Alternatively, prepend `pipenv run` to
-the commands.
-
-### Development
-`python main.py`
-
-### Testing
-`invoke test`
-
-### Production
-`ENV=prod python main.py` or `ENV=prod nohup python main.py &`
-
-## Changelog
-### v0.8.0-beta
-* Fix program stops running after a while (issue #30)
-* Implement proper logging
-* Clean up and refactor codebase
-* Travis CI
-
-### v0.7.0-beta
-* Fix random crashes (issue #25)
-* Fix README formatting issues
-* Clean up code
-* Update README developer documentation
-
-### v0.6.0-beta
-* Update subreddit monitoring implementation
-### v0.5.0-beta
-* Fix program crash when exception occurs (@yleong PR #22)
-* Fix exception in handling Ricemedia links (@yleong PR #20)
-* Add support for businesstimes.com.sg, tnp.sg, yahoo.com (@changhuapeng PR #18)
-* Add support for CNAlifestyle (@changhuapeng PR #17)
-### v0.4.0-beta
-* Add Straits Times support
-### v0.3.0-beta
-* Temporarily remove Straits Times support
-(until premium article detection feature)
-* Fix Todayonline article handling
-* Fix Ricemedia article handling
-* Update AbstractBaseHandler `handle` method definition
-* Add tests
-
-### v0.2.2-beta
-* Fix scheduling bug
-
-### v0.2.1-beta
-* Remove ricemedia.co from list of supported sites (incompatibility)
-* Fix start script to run immediately
-* Fix long lines in README
-
-### v0.2.0-beta
-* Add scheduling to run every 2 minutes
-* Update database module to be compatible with new database table structure
-(3 columns)
-
-### v0.1.0-beta
-* Minimum viable product
-* Supports channelnewsasia.com, mothership.sg, ricemedia.co, straitstimes.com, 
-todayonline.com, zula.sg
