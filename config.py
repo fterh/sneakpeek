@@ -28,5 +28,10 @@ PASSWORD = os.getenv("PASSWORD")
 
 USER_AGENT = os.getenv("USER_AGENT")
 
-SUBREDDIT = os.getenv("SUBREDDIT", "all")  # Set subreddit using environmental variables, default to /r/all
+# Read subreddit from environment variable; warn and default to /r/all if not set
+SUBREDDIT = os.getenv("SUBREDDIT")
+if SUBREDDIT is None:
+    logging.warning("Environment variable `SUBREDDIT` is not set; defaulting to `all`")
+    SUBREDDIT = "all"
+
 COMMENT_LENGTH_LIMIT = 9900
