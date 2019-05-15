@@ -1,3 +1,5 @@
+"""Test the scan.py module."""
+
 import unittest
 from unittest import mock, TestCase
 
@@ -7,12 +9,13 @@ from qualify import qualify
 MOCK_SUBMISSION_ID = "foo123"
 MOCK_SUBMISSION_URL = "bar123"
 
-mock_submission = mock.Mock()
-mock_submission.id = MOCK_SUBMISSION_ID
-mock_submission.url = MOCK_SUBMISSION_URL
+MOCK_SUBMISSION = mock.Mock()
+MOCK_SUBMISSION.id = MOCK_SUBMISSION_ID
+MOCK_SUBMISSION.url = MOCK_SUBMISSION_URL
 
 
 class TestQualify(TestCase):
+    """Test the scan.py module."""
 
     @mock.patch("qualify.HandlerManager")
     def test_qualify_should_return_true(self, mock_HandlerManager):
@@ -20,10 +23,10 @@ class TestQualify(TestCase):
         # (2) Submission has not been previously encountered
         # (3) Submission has a Handler
 
-        mock_submission.is_self = False
+        MOCK_SUBMISSION.is_self = False
         mock_HandlerManager.has_handler.return_value = True
 
-        self.assertTrue(qualify(mock_submission))
+        self.assertTrue(qualify(MOCK_SUBMISSION))
 
         # Also assert that qualify() did call the method HandlerManager.has_handler()
         mock_HandlerManager.has_handler.assert_called_with(MOCK_SUBMISSION_URL)
@@ -32,10 +35,10 @@ class TestQualify(TestCase):
     def test_qualify_should_return_false_1(self, mock_HandlerManager):
         # Submission is not a link
 
-        mock_submission.is_self = True
+        MOCK_SUBMISSION.is_self = True
         mock_HandlerManager.has_handler.return_value = True
 
-        self.assertFalse(qualify(mock_submission))
+        self.assertFalse(qualify(MOCK_SUBMISSION))
 
         # Also assert that qualify() did call the method HandlerManager.has_handler()
         mock_HandlerManager.has_handler.assert_called_with(MOCK_SUBMISSION_URL)
@@ -44,10 +47,10 @@ class TestQualify(TestCase):
     def test_qualify_should_return_false_3(self, mock_HandlerManager):
         # Submission does not have a Handler
 
-        mock_submission.is_self = False
+        MOCK_SUBMISSION.is_self = False
         mock_HandlerManager.has_handler.return_value = False
 
-        self.assertFalse(qualify(mock_submission))
+        self.assertFalse(qualify(MOCK_SUBMISSION))
 
         # Also assert that qualify() did call the method HandlerManager.has_handler()
         mock_HandlerManager.has_handler.assert_called_with(MOCK_SUBMISSION_URL)

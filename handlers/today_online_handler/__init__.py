@@ -1,13 +1,15 @@
+"""Handler for Today Online."""
+
 import json
 import requests
-
 from bs4 import BeautifulSoup
-
 from comment import Comment
-from handlers.AbstractBaseHandler import AbstractBaseHandler, HandlerError
+from handlers.abstract_base_handler import AbstractBaseHandler, HandlerError
 
 
 class TodayonlineHandler(AbstractBaseHandler):
+    """Handler for Today Online."""
+
     @classmethod
     def handle(cls, url):
         html = requests.get(url).text

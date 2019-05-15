@@ -1,7 +1,7 @@
 # sneakpeek
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a196dd3251ec4600b126c9a7712ddbf2)](https://app.codacy.com/app/fterh/sneakpeek?utm_source=github.com&utm_medium=referral&utm_content=fterh/sneakpeek&utm_campaign=Badge_Grade_Dashboard)
 [![Build Status](https://travis-ci.com/fterh/sneakpeek.svg?branch=master)](https://travis-ci.com/fterh/sneakpeek)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a196dd3251ec4600b126c9a7712ddbf2)](https://app.codacy.com/app/fterh/sneakpeek?utm_source=github.com&utm_medium=referral&utm_content=fterh/sneakpeek&utm_campaign=Badge_Grade_Dashboard)
 
 A Reddit bot that previews hyperlinks and posts their contents as a comment.
 It should **never spam or double-post**, and will skip a comment if it is

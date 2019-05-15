@@ -13,6 +13,7 @@ invoke = "*"
 newspaper3k = "*"
 schedule = "*"
 beautifulsoup4 = "*"
+pylint = "*"
 
 [requires]
 python_version = "3.7"

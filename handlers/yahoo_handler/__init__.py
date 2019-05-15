@@ -1,13 +1,14 @@
-import json
+"""Handler for Yahoo."""
+
 import requests
-
 from bs4 import BeautifulSoup
-
 from comment import Comment
-from handlers.AbstractBaseHandler import AbstractBaseHandler, HandlerError
+from handlers.abstract_base_handler import AbstractBaseHandler, HandlerError
 
 
 class YahooHandler(AbstractBaseHandler):
+    """Handler for Yahoo."""
+
     @classmethod
     def handle(cls, url):
         html = requests.get(url).text

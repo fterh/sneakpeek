@@ -1,13 +1,15 @@
-import requests
+"""Handler for Ricemedia."""
+
 import textwrap
-
+import requests
 from bs4 import BeautifulSoup
-
 from comment import Comment
-from handlers.AbstractBaseHandler import AbstractBaseHandler, HandlerError
+from handlers.abstract_base_handler import AbstractBaseHandler, HandlerError
 
 
 class RicemediaHandler(AbstractBaseHandler):
+    """Handler for Ricemedia."""
+
     @classmethod
     def handle(cls, url):
         html = requests.get(url).text
@@ -29,7 +31,7 @@ class RicemediaHandler(AbstractBaseHandler):
 
         unwrapped_body = soup.text[article_start:article_end]
         article_body = "\n".join(textwrap.wrap(unwrapped_body, 80))
-        article_body = article_body.replace("\n", "\n\n")  # Markdown requires 2 \n to create a new paragraph
+        article_body = article_body.replace("\n", "\n\n")  # Markdown requires 2 \n to # create a new paragraph
         article_title = soup.find(name="h2", class_="post-title").text
 
         return Comment(article_title, article_body.replace("\xa0", " "))

@@ -1,6 +1,7 @@
-import config
+"""Monitor a Subreddit for new submissions."""
+
 import logging
-import sys
+import config
 from handler import HandlerManager
 from comment import format_comment
 from qualify import qualify
@@ -12,10 +13,9 @@ def scan(subreddit):
 
     for submission in subreddit.stream.submissions(skip_existing=True):
         logging.info("Operating on submission")
-        logging.debug("Submission ID = {}, title = {}".format(
-            submission.id,
-            submission.title
-        ))
+        logging.debug("Submission ID = %s, title = %s",
+                      submission.id,
+                      submission.title)
 
         does_qualify = qualify(submission)
 
@@ -29,12 +29,13 @@ def scan(subreddit):
         try:
             logging.info("Attempting to get article handler")
             handler = HandlerManager.get_handler(submission.url)
-            logging.info("Article handler = {}".format(handler))
-        except Exception as e:
+            logging.info("Article handler = %s",
+                         handler)
+        except Exception as exception:
             logging.error("""
                             An error occurred while getting article handler. This should never happen.
                             """)
-            logging.error("Exception = {}".format(e))
+            logging.error("Exception = %s", exception)
             logging.info("Skipping current submission")
             continue
 
@@ -43,11 +44,10 @@ def scan(subreddit):
             logging.info("Attempting to generate raw comment using handler")
             comment_raw = handler.handle(submission.url)
             logging.info("Raw comment generated")
-        except Exception as e:
-            logging.error("An error occurred while handling URL = {}".format(
-                submission.url
-            ))
-            logging.error("Exception = {}".format(e))
+        except Exception as exception:
+            logging.error("An error occurred while handling URL = %s",
+                          submission.url)
+            logging.error("Exception = %s", exception)
             logging.info("Skipping current submission")
             continue
 
@@ -64,8 +64,8 @@ def scan(subreddit):
                 logging.info("Attempting to post comment")
                 submission.reply(comment_markdown)
                 logging.info("Comment posting succeeded")
-            except Exception as e:
+            except Exception as exception:
                 logging.error("An error occurred while posting comment")
-                logging.error("Exception = {}".format(e))
+                logging.error("Exception = %s", exception)
         else:
             logging.warning("Submission is too long to be posted")
