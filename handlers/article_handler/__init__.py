@@ -1,7 +1,6 @@
 from newspaper import Article
-
 from comment import Comment
-from handlers.AbstractBaseHandler import AbstractBaseHandler, HandlerError
+from handlers.abstract_base_handler import AbstractBaseHandler, HandlerError
 
 
 class ArticleHandler(AbstractBaseHandler):
