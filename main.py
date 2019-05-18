@@ -1,3 +1,5 @@
+"""Entry point of the sneakpeek application."""
+
 import logging
 import praw
 import config
@@ -5,6 +7,7 @@ from scan import scan
 
 
 def setup_logging():
+    """Configure project logging options."""
     root = logging.getLogger()
     root.setLevel(config.LOGGING["LEVEL"])
 
@@ -18,6 +21,7 @@ def setup_logging():
 
 
 def start():
+    """Start the sneakpeek application."""
     logging.info("Starting application")
     logging.info("Instantiating Reddit instance")
     reddit = praw.Reddit(
@@ -29,12 +33,12 @@ def start():
 
     try:
         scan(reddit.subreddit(config.SUBREDDIT))
-    except Exception as e:
+    except Exception as exception:
         # This should never happen,
         # because it breaks the infinite subreddit monitoring
         # provided by subreddit.stream.submissions()
         logging.critical("Exception occurred while scanning. This should never happen.")
-        logging.critical(e)
+        logging.critical(exception)
 
 
 if __name__ == "__main__":

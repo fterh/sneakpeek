@@ -1,12 +1,16 @@
+"""Handler for CNA Lifestyle."""
+
 import json
 import requests
 
 from bs4 import BeautifulSoup
 
 from comment import Comment
-from handlers.AbstractBaseHandler import AbstractBaseHandler, HandlerError
+from handlers.abstract_base_handler import AbstractBaseHandler, HandlerError
 
 class CNAlifestyleHandler(AbstractBaseHandler):
+    """Handler for CNA Lifestyle."""
+
     @classmethod
     def handle(cls, url):
         html = requests.get(url).text

@@ -1,3 +1,5 @@
+"""The abstract base Handler class which all Handlers must subclass."""
+
 from abc import ABC, abstractmethod
 
 
@@ -11,8 +13,7 @@ class AbstractBaseHandler(ABC):
         All Handlers must override the `handle` method,
         which must return a Comment object.
         """
-        pass
 
 
 class HandlerError(Exception):
-    pass
+    """An Error exception raised during the operation of a Handler."""

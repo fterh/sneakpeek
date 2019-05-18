@@ -1,4 +1,9 @@
 ## Changelog
+##v1.0.1
+* Fix style issues (in code and Markdown)
+* Add Codacy badge
+* Warn if `SUBREDDIT` environment variable is not set
+
 ## v1.0.0
 * Add support for Docker
 * Set up continuous deployment (Heroku)
@@ -30,8 +35,7 @@
 * Add Straits Times support
 
 ### v0.3.0-beta
-* Temporarily remove Straits Times support
-(until premium article detection feature)
+* Temporarily remove Straits Times support (until premium article detection feature)
 * Fix Todayonline article handling
 * Fix Ricemedia article handling
 * Update AbstractBaseHandler `handle` method definition
@@ -52,5 +56,4 @@
 
 ### v0.1.0-beta
 * Minimum viable product
-* Supports channelnewsasia.com, mothership.sg, ricemedia.co, straitstimes.com, 
-todayonline.com, zula.sg
+* Supports channelnewsasia.com, mothership.sg, ricemedia.co, straitstimes.com, todayonline.com, zula.sg

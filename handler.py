@@ -1,15 +1,16 @@
-import tldextract
+"""Manage Handlers and map subdomains and domain names to Handlers."""
 
 from collections import defaultdict
+import tldextract
 
-from handlers.ArticleHandler import ArticleHandler
-from handlers.BusinesstimesHandler import BusinesstimesHandler
-from handlers.CNAlifestyleHandler import CNAlifestyleHandler
-from handlers.RicemediaHandler import RicemediaHandler
-from handlers.STHandler import STHandler
-from handlers.TNPHandler import TNPHandler
-from handlers.TodayonlineHandler import TodayonlineHandler
-from handlers.YahooHandler import YahooHandler
+from handlers.article_handler import ArticleHandler
+from handlers.business_times_handler import BusinesstimesHandler
+from handlers.cna_lifestyle_handler import CNAlifestyleHandler
+from handlers.ricemedia_handler import RicemediaHandler
+from handlers.straits_times_handler import STHandler
+from handlers.tnp_handler import TNPHandler
+from handlers.today_online_handler import TodayonlineHandler
+from handlers.yahoo_handler import YahooHandler
 
 
 class HandlerManager:
@@ -21,8 +22,9 @@ class HandlerManager:
             lambda: BusinesstimesHandler
         ),
         "channelnewsasia.com": defaultdict(
-            lambda: ArticleHandler, # Default Handler for all subdomains (unless specify) for channelnewsasia.com
-            cnalifestyle = CNAlifestyleHandler
+            lambda: ArticleHandler,  # Default Handler for all subdomains (unless specify)
+                                     # for channelnewsasia.com
+            cnalifestyle=CNAlifestyleHandler
         ),
         "mothership.sg": defaultdict(
             lambda: ArticleHandler
