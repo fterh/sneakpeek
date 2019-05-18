@@ -1,4 +1,9 @@
 ## Changelog
+##v1.0.1
+* Fix style issues (in code and Markdown)
+* Add Codacy badge
+* Warn if `SUBREDDIT` environment variable is not set
+
 ## v1.0.0
 * Add support for Docker
 * Set up continuous deployment (Heroku)
