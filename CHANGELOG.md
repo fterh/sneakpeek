@@ -30,8 +30,7 @@
 * Add Straits Times support
 
 ### v0.3.0-beta
-* Temporarily remove Straits Times support
-(until premium article detection feature)
+* Temporarily remove Straits Times support (until premium article detection feature)
 * Fix Todayonline article handling
 * Fix Ricemedia article handling
 * Update AbstractBaseHandler `handle` method definition
@@ -52,5 +51,4 @@
 
 ### v0.1.0-beta
 * Minimum viable product
-* Supports channelnewsasia.com, mothership.sg, ricemedia.co, straitstimes.com, 
-todayonline.com, zula.sg
+* Supports channelnewsasia.com, mothership.sg, ricemedia.co, straitstimes.com, todayonline.com, zula.sg
