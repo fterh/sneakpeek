@@ -27,12 +27,12 @@ PRs are always welcome.
 3. Improve documentation
 
 ### Getting started
-- Read through [PRAW's Quick Start](https://praw.readthedocs.io/en/latest/getting_started/quick_start.html#quick-start) and ensure you have the following
-    - Reddit Account
-    - Client ID and Client Secret
-    - User Agent
-- Install Python 3 and [Pipenv](https://docs.pipenv.org/en/latest/)
-- `pipenv install`, then `pipenv shell` to activate the pipenv.
+* Read through [PRAW's Quick Start](https://praw.readthedocs.io/en/latest/getting_started/quick_start.html#quick-start) and ensure you have the following
+  * Reddit Account
+  * Client ID and Client Secret
+  * User Agent
+* Install Python 3 and [Pipenv](https://docs.pipenv.org/en/latest/)
+* `pipenv install`, then `pipenv shell` to activate the pipenv.
 
 
 ### New version release checklist

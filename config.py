@@ -10,7 +10,7 @@ load_dotenv()
 LOGGING = {
     "LEVEL": os.getenv("LOGGING_LEVEL"),
     # Log to stdout (see: https://12factor.net/logs)
-    "HANDLER": logging.StreamHandler(sys.stdout)  
+    "HANDLER": logging.StreamHandler(sys.stdout)
 }
 
 BOT = {
