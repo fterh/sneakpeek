@@ -12,7 +12,6 @@ def setup_logging():
     root.setLevel(config.LOGGING["LEVEL"])
 
     handler = config.LOGGING["HANDLER"]
-    handler.setLevel(logging.DEBUG)
 
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
