@@ -31,9 +31,10 @@ PRs are always welcome.
   * Reddit Account
   * Client ID and Client Secret
   * User Agent
-* Install Python 3 and [Pipenv](https://docs.pipenv.org/en/latest/)
-* `pipenv install`, then `pipenv shell` to activate the pipenv.
 
+* Install Python 3 and [Pipenv](https://docs.pipenv.org/en/latest/)
+
+* `pipenv install`, then `pipenv shell` to activate the pipenv.
 
 ### New version release checklist
 1. Create a release branch (e.g. `release-v1.2.3`) from the `develop` branch
