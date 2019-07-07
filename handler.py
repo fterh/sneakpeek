@@ -5,6 +5,7 @@ import tldextract
 
 from handlers.article_handler import ArticleHandler
 from handlers.business_times_handler import BusinesstimesHandler
+from handlers.cna_handler import CNAHandler
 from handlers.cna_lifestyle_handler import CNAlifestyleHandler
 from handlers.ricemedia_handler import RicemediaHandler
 from handlers.straits_times_handler import STHandler
@@ -22,7 +23,7 @@ class HandlerManager:
             lambda: BusinesstimesHandler
         ),
         "channelnewsasia.com": defaultdict(
-            lambda: ArticleHandler,  # Default Handler for all subdomains (unless specify)
+            lambda: CNAHandler,  # Default Handler for all subdomains (unless specify)
                                      # for channelnewsasia.com
             cnalifestyle=CNAlifestyleHandler
         ),
