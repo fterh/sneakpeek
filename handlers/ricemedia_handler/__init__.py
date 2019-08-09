@@ -1,6 +1,5 @@
 """Handler for Ricemedia."""
 
-import textwrap
 import requests
 from bs4 import BeautifulSoup
 from comment import Comment
@@ -16,8 +15,8 @@ class RicemediaHandler(AbstractBaseHandler):
         soup = BeautifulSoup(html, "html.parser")
 
         # https://stackoverflow.com/a/24618186
-        # We only want article text, not inline scripts or inline jss
-        for script in soup(["script", "style"]):
+        # We only want article text, not figure, inline scripts or inline jss
+        for script in soup(["figure", "script", "style"]):
             script.extract()
 
         # Plant markers to denote the start and end of the article
@@ -30,8 +29,7 @@ class RicemediaHandler(AbstractBaseHandler):
         article_end = soup.text.index(end_marker)
 
         unwrapped_body = soup.text[article_start:article_end]
-        article_body = "\n".join(textwrap.wrap(unwrapped_body, 80))
-        article_body = article_body.replace("\n", "\n\n")  # Markdown requires 2 \n to # create a new paragraph
+        article_body = unwrapped_body.replace("\n", "\n\n")  # Markdown requires 2 \n to # create a new paragraph
         article_title = soup.find(name="h2", class_="post-title").text
 
         return Comment(article_title, article_body.replace("\xa0", " "))
