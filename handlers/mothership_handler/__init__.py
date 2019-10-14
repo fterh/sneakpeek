@@ -12,12 +12,8 @@ class MothershipHandler(AbstractBaseHandler):
         
         title = article.title
         body = article.text
-        
-        # replace parsed arguments
+        # replace parsed arguments and trailing ads
         body = body.replace('\nAdvertisement\n', '')
-        
-        # remove trailing ads
-        head, sep, tail = body.partition('Content that keeps Mothership.sg going')
-        body = head       
+        body = body.partition('Content that keeps Mothership.sg going')
 
-        return Comment(title, body)
+        return Comment(title, body[0])
