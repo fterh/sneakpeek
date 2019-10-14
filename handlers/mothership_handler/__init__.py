@@ -9,7 +9,6 @@ class MothershipHandler(AbstractBaseHandler):
         article = Article(url)
         article.download()
         article.parse()
-        
         title = article.title
         body = article.text
         # replace parsed arguments and trailing ads
