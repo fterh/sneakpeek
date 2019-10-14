@@ -11,6 +11,7 @@ from handlers.straits_times_handler import STHandler
 from handlers.tnp_handler import TNPHandler
 from handlers.today_online_handler import TodayonlineHandler
 from handlers.yahoo_handler import YahooHandler
+from handlers.mothership_handler import MothershipHandler
 
 
 class HandlerManager:
@@ -27,7 +28,7 @@ class HandlerManager:
             cnalifestyle=CNAlifestyleHandler
         ),
         "mothership.sg": defaultdict(
-            lambda: ArticleHandler
+            lambda: MothershipHandler
         ),
         "ricemedia.co": defaultdict(
             lambda: RicemediaHandler
