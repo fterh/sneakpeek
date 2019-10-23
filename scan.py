@@ -69,12 +69,11 @@ def scan(subreddit):
         else:
             try:
                 logging.info("Attempting to post two comments")
-                i=1
+                i = 1
                 while (comment_markdown[9999-i] != " "):
                     i += 1  
                     part_1 = comment_markdown[0: 10000-i]
                     part_2 = comment_markdown[10000-i:]
-                
                 if (part_2[0] != ">"):
                     part_2 = ">" + part_2
                     
@@ -84,5 +83,3 @@ def scan(subreddit):
             except Exception as exception:
                 logging.error("An error occurred while posting comment")
                 logging.error("Exception = %s", exception)
-            
-                
