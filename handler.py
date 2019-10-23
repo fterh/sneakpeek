@@ -12,6 +12,7 @@ from handlers.tnp_handler import TNPHandler
 from handlers.today_online_handler import TodayonlineHandler
 from handlers.yahoo_handler import YahooHandler
 from handlers.mothership_handler import MothershipHandler
+from handlers.theguardian_handler import TheGuardianHandler
 
 
 class HandlerManager:
@@ -47,7 +48,10 @@ class HandlerManager:
         ),
         "zula.sg": defaultdict(
             lambda: ArticleHandler
-        )
+        ),
+        "theguardian.com": defaultdict(
+                lambda: ArticleHandler
+        ),
     }
 
     @classmethod

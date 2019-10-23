@@ -6,7 +6,6 @@ from handler import HandlerManager
 from comment import format_comment
 from qualify import qualify
 
-
 def scan(subreddit):
     """Scan a Subreddit for new submissions."""
     logging.info("Starting scan")
@@ -68,4 +67,22 @@ def scan(subreddit):
                 logging.error("An error occurred while posting comment")
                 logging.error("Exception = %s", exception)
         else:
-            logging.warning("Submission is too long to be posted")
+            try:
+                logging.info("Attempting to post two comments")
+                i=1
+                while (comment_markdown[9999-i] != " "):
+                    i += 1  
+                    part_1 = comment_markdown[0: 10000-i]
+                    part_2 = comment_markdown[10000-i:]
+                
+                if (part_2[0] != ">"):
+                    part_2 = ">" + part_2
+                    
+                first_comment = submission.reply(part_1)
+                first_comment.reply(part_2)
+                logging.info("Comments posting succeeded")
+            except Exception as exception:
+                logging.error("An error occurred while posting comment")
+                logging.error("Exception = %s", exception)
+            
+                

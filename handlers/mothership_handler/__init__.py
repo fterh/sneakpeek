@@ -1,9 +1,11 @@
+"""Handler for Mothership."""
 from newspaper import Article
 from comment import Comment
 from handlers.abstract_base_handler import AbstractBaseHandler, HandlerError
 
 
 class MothershipHandler(AbstractBaseHandler):
+    """Handler for Mothership."""
     @classmethod
     def handle(cls, url):
         article = Article(url)
