@@ -64,8 +64,10 @@ def scan(subreddit):
                 logging.info("Attempting to post comment")
                 submission.reply(comment_markdown)
                 logging.info("Comment posting succeeded")
-            except:
+            except Exception as exception:
                 logging.error("Comment is too long to be posted in a single comment")
+                logging.error("Exception = %s", exception)
+
                 try:
                     logging.info("Attempting to post two comments")
                     i=1
