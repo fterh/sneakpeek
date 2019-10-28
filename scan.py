@@ -59,13 +59,31 @@ def scan(subreddit):
         comment_markdown = format_comment(comment_raw)
         logging.info("Formatted comment generated")
 
-        if len(comment_markdown) < config.COMMENT_LENGTH_LIMIT:
+        if len(comment_markdown) < 2*config.COMMENT_LENGTH_LIMIT:
             try:
                 logging.info("Attempting to post comment")
                 submission.reply(comment_markdown)
                 logging.info("Comment posting succeeded")
             except Exception as exception:
-                logging.error("An error occurred while posting comment")
+                logging.error("Comment is too long to be posted in a single comment")
                 logging.error("Exception = %s", exception)
+
+                try:
+                    logging.info("Attempting to post two comments")
+                    i=1
+                    while (comment_markdown[config.COMMENT_LENGTH_LIMIT-i] != " "):
+                        i += 1
+                    part_1 = comment_markdown[0: config.COMMENT_LENGTH_LIMIT-i]
+                    part_2 = comment_markdown[config.COMMENT_LENGTH_LIMIT-i:]
+
+                    if (part_2[0] != ">"):
+                        part_2 = ">" + part_2
+
+                    first_comment = submission.reply(part_1)
+                    first_comment.reply(part_2)
+                    logging.info("Comments posting succeeded")
+                except Exception as exception:
+                    logging.error("An error occurred while posting two comments")
+                    logging.error("Exception = %s", exception)
         else:
             logging.warning("Submission is too long to be posted")
