@@ -1,5 +1,8 @@
 ## Changelog
-##v1.0.1
+## v1.0.2
+* (Try to) post overlength comments as two separate comments
+
+## v1.0.1
 * Fix style issues (in code and Markdown)
 * Add Codacy badge
 * Warn if `SUBREDDIT` environment variable is not set
