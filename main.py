@@ -4,6 +4,7 @@ import logging
 import praw
 import config
 from scan import scan
+from config import bot_config
 
 
 def setup_logging():
@@ -24,15 +25,17 @@ def start():
     """Start the sneakpeek application."""
     logging.info("Starting application")
     logging.info("Instantiating Reddit instance")
+
     reddit = praw.Reddit(
-        client_id=config.CLIENT["ID"],
-        client_secret=config.CLIENT["SECRET"],
-        user_agent=config.USER_AGENT,
-        username=config.USERNAME,
-        password=config.PASSWORD)
+        client_id=bot_config.client_id,
+        client_secret=bot_config.client_secret,
+        user_agent=bot_config.user_agent,
+        username=bot_config.username,
+        password=bot_config.password
+    )
 
     try:
-        scan(reddit.subreddit(config.SUBREDDIT))
+        scan(reddit.subreddit(bot_config.subreddit))
     except Exception as exception:
         # This should never happen,
         # because it breaks the infinite subreddit monitoring
