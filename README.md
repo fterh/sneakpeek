@@ -28,7 +28,7 @@ PRs are always welcome.
 
 ### New version release checklist
 1. Create a release branch (e.g. `release-v1.2.3`) from the `develop` branch
-2. Bump version numbers in `config.py` to the release branch
+2. Bump version numbers in `about.yaml` in the release branch
 3. Update README
 4. Possibly commit minor bug fixes to the release branch
 5. Merge the release branch into `master` and `develop` 
