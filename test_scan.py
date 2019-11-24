@@ -5,14 +5,16 @@ import unittest
 from unittest import mock, TestCase
 
 import config
+from comment import Comment
 
 # Set ENV to "test" before loading scan module
 config.ENV = "test"
 
 from scan import scan
+from config import bot_config
 import test_qualify
 
-RAW_COMMENT = "some_raw_comment_text"
+RAW_COMMENT = Comment(title='This is a thing', body='some_raw_comment_text')
 FORMATTED_COMMENT = "some_formatted_comment_text"
 
 # Set up mock objects
@@ -31,9 +33,9 @@ class TestScan(TestCase):
 
     @mock.patch("scan.qualify")
     @mock.patch("scan.HandlerManager")
-    @mock.patch("scan.format_comment")
+    @mock.patch("comment.Comment.format_as_md")
     def test_success(self,
-                     mock_format_comment,
+                     mock_comment_format,
                      mock_HandlerManager,
                      mock_qualify
                      ):
@@ -42,7 +44,7 @@ class TestScan(TestCase):
         """
         mock_qualify.return_value = True
         mock_HandlerManager.get_handler.return_value = MOCK_HANDLER
-        mock_format_comment.return_value = FORMATTED_COMMENT
+        mock_comment_format.return_value = FORMATTED_COMMENT
 
         scan(MOCK_SUBREDDIT)
 
@@ -63,9 +65,9 @@ class TestScan(TestCase):
 
     @mock.patch("scan.qualify")
     @mock.patch("scan.HandlerManager")
-    @mock.patch("scan.format_comment")
+    @mock.patch("comment.Comment.format_as_md")
     def test_skip_2(self,
-                    mock_format_comment,
+                    mock_comment_format,
                     mock_HandlerManager,
                     mock_qualify
                     ):
@@ -74,13 +76,14 @@ class TestScan(TestCase):
         """
         mock_qualify.return_value = True
         mock_HandlerManager.get_handler.return_value = MOCK_HANDLER
-        mock_format_comment.return_value = FORMATTED_COMMENT
-        original_comment_length_limit = config.COMMENT_LENGTH_LIMIT
-        config.COMMENT_LENGTH_LIMIT = 1
+        mock_comment_format.return_value = FORMATTED_COMMENT
+        original_comment_length_limit = bot_config.comment_length_limit
+
+        bot_config.comment_length_limit = 1
 
         scan(MOCK_SUBREDDIT)
 
-        config.COMMENT_LENGTH_LIMIT = original_comment_length_limit
+        bot_config.comment_length_limit = original_comment_length_limit
 
         test_qualify.MOCK_SUBMISSION.reply.assert_not_called()
 
