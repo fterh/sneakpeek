@@ -2,7 +2,6 @@
 
 import logging
 import praw
-import config
 from scan import scan
 from config import bot_config
 
@@ -10,10 +9,10 @@ from config import bot_config
 def setup_logging():
     """Configure project logging options."""
     root = logging.getLogger()
-    root.setLevel(config.LOGGING["LEVEL"])
+    root.setLevel(bot_config.logging_level)
 
-    handler = config.LOGGING["HANDLER"]
-    handler.setLevel(logging.DEBUG)
+    handler = bot_config.logging_handler
+    handler.setLevel(bot_config.logging_level)
 
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 

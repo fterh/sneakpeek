@@ -1,7 +1,6 @@
 """Monitor a Subreddit for new submissions."""
 
 import logging
-import config
 from handler import HandlerManager
 from qualify import qualify
 from config import bot_config
