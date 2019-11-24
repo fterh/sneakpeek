@@ -1,6 +1,7 @@
 """The abstract base Handler class which all Handlers must subclass."""
 
 from abc import ABC, abstractmethod
+from comment import Comment
 
 
 class AbstractBaseHandler(ABC):
@@ -8,7 +9,7 @@ class AbstractBaseHandler(ABC):
 
     @classmethod
     @abstractmethod
-    def handle(cls, url):
+    def handle(cls, url) -> Comment:
         """
         All Handlers must override the `handle` method,
         which must return a Comment object.
