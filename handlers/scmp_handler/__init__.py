@@ -43,7 +43,7 @@ class ScmpHandler(AbstractBaseHandler):
                     if elem_child['type'] == "text":
                         subheadlines.append(elem_child['data'])
 
-        subheadlines_md = "\n".join(["* " + subheadline.strip() for subheadline in subheadlines if subheadline.strip() != ""])
+        subheadlines_md = "\n\n".join(["* " + subheadline.strip() for subheadline in subheadlines if subheadline.strip() != ""])
 
         body_key = [k for k in json_content[content_key].keys() if k.startswith("body")][0]
 
@@ -58,6 +58,6 @@ class ScmpHandler(AbstractBaseHandler):
             body_list.append(get_text_from_children(j['children']))
 
         body_list = [b.strip() for b in body_list if b.strip() != ""]
-        body = subheadlines_md + "\n" + "\n".join(body_list)
+        body = subheadlines_md + "\n\n" + "\n\n".join(body_list)
 
         return Comment(title, body.strip())
