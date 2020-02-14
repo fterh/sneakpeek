@@ -13,6 +13,7 @@ too long.
 * channelnewsasia.com (CNAlifestyle)
 * mothership.sg  
 * ricemedia.co
+* scmp.com
 * straitstimes.com
 * tnp.sg
 * todayonline.com
