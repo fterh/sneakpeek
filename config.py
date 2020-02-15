@@ -1,37 +1,39 @@
 import logging
 import os
 import sys
+import yaml
 from dotenv import load_dotenv
 
 
-load_dotenv()
+class BotConfig:
+    def __init__(self):
+        load_dotenv()
 
-# Logging configuration
-LOGGING = {
-    "LEVEL": logging.DEBUG,
-    "HANDLER": logging.StreamHandler(sys.stdout)  # Log to stdout (see: https://12factor.net/logs)
-}
+        self.client_id: str = os.getenv('CLIENT_ID')
+        self.client_secret: str = os.getenv('CLIENT_SECRET')
+        self.username: str = os.getenv('USERNAME')
+        self.password: str = os.getenv('PASSWORD')
+        self.user_agent: str = os.getenv('USER_AGENT')
+        self.comment_length_limit: int = 9900
 
-BOT = {
-    "VERSION": "1.0.2",
-    "REPO_LINK": "https://github.com/fterh/sneakpeek",
-    "CONTRIBUTE_LINK": "https://github.com/fterh/sneakpeek"
-}
+        self.logging_level = logging.DEBUG
+        self.logging_handler = logging.StreamHandler(sys.stdout)
 
-CLIENT = {
-    "ID": os.getenv("CLIENT_ID"),
-    "SECRET": os.getenv("CLIENT_SECRET")
-}
+        # Read subreddit from environment variable; warn and default to /r/all if not set
+        self.subreddit: str = os.getenv('SUBREDDIT')
+        if self.subreddit is None:
+            logging.warning('Environment variable `SUBREDDIT` is not set; defaulting to `all`')
+            self.subreddit: str = 'all'
 
-USERNAME = os.getenv("USERNAME")
-PASSWORD = os.getenv("PASSWORD")
+        # load details about bot
+        with open('about.yaml', 'r') as f:
+            about = yaml.safe_load(f)
+        if about is None:
+            logging.error('Couldn\'t load \'about.yaml\'')
+        self.version = about.get('version')
+        self.repo = about.get('repo')
 
-USER_AGENT = os.getenv("USER_AGENT")
 
-# Read subreddit from environment variable; warn and default to /r/all if not set
-SUBREDDIT = os.getenv("SUBREDDIT")
-if SUBREDDIT is None:
-    logging.warning("Environment variable `SUBREDDIT` is not set; defaulting to `all`")
-    SUBREDDIT = "all"
-
-COMMENT_LENGTH_LIMIT = 9900
+# This is a shitty singleton, but it gets the job done!
+# Always import bot_config instead of BotConfig
+bot_config = BotConfig()
