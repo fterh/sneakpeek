@@ -12,5 +12,5 @@ class ArticleHandler(AbstractBaseHandler):
 
         title = article.title
         body = article.text
-
+        body = body.replace('> Advertisement\n\n', '')
         return Comment(title, body)
