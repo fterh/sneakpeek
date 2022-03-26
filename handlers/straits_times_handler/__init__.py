@@ -34,7 +34,9 @@ class STHandler(AbstractBaseHandler):
 
     @classmethod
     def make_soup(cls):
-        html = requests.get(cls.url).text
+        user_agent = "Googlebot-News"
+        headers = {"User-Agent": user_agent}
+        html = requests.get(cls.url, headers=headers).text
         soup = BeautifulSoup(html, "html.parser")
         cls.soup = soup
         return soup
@@ -48,14 +50,13 @@ class STHandler(AbstractBaseHandler):
     @classmethod
     def handle_non_premium(cls):
         """Handle a non-premium article."""
-        article = Article(cls.url)
-        article.download()
-        article.parse()
+        cls.title = cls.soup.find(name="meta", property="og:title")['content']
+        print(f"article title: {cls.title}")
+        body = ""
+        for line in cls.soup.select(".article-content-rawhtml .ds-field-item > .layout p"):
+            body += line.get_text() + "\n\n"
 
-        title = article.title
-        body = article.text
-
-        return Comment(title, body)
+        return Comment(cls.title, body)
 
     @classmethod
     def handle_premium(cls):
