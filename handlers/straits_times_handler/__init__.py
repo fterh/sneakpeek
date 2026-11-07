@@ -34,7 +34,7 @@ class STHandler(AbstractBaseHandler):
 
     @classmethod
     def make_soup(cls):
-        html = requests.get(cls.url).text
+        html = requests.get(cls.url, timeout=30).text
         soup = BeautifulSoup(html, "html.parser")
         cls.soup = soup
         return soup
@@ -135,7 +135,7 @@ class STHandler(AbstractBaseHandler):
         user_agent = "Googlebot-News"
         url = f"https://www.pressreader.com/singapore/the-straits-times/{published_date}"
         headers = {"User-Agent": user_agent}
-        articles_list = requests.get(url, headers=headers).text
+        articles_list = requests.get(url, headers=headers, timeout=30).text
         articles_list = articles_list.replace("&#173;", "")  # clean the text
         return articles_list
 
